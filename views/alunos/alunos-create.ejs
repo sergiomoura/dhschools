@@ -1,0 +1,35 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/aside.ejs') %>
+<link rel="stylesheet" href="/stylesheets/alunos-create.css">
+<main id="alunos-create">
+    <form>
+        <label for="nome">
+            Nome:
+            <input type="text" name="nome" id="nome">
+        </label>
+        <label for="email">
+            E-mail:
+            <input type="text" name="email" id="email">
+        </label>
+        <label for="endereco">
+            Endereço:
+            <input type="text" name="endereco" id="endereco">
+        </label>
+        <label for="turma">
+            Turma:
+            <select name="turma" id="turma">
+                <option value="">Selecione uma Turma</option>
+                <option value="">0521CCCCCCBRED | Full Stack Node</option>
+                <option value="">0521CCCCCCBRED | Full Stack Node</option>
+                <option value="">0521CCCCCCBRED | Full Stack Node</option>
+                <option value="">0521CCCCCCBRED | Full Stack Node</option>                
+            </select>
+        </label>
+        <div class="controles">
+            <button type="reset" class="cancel">Cancelar</button>
+            <button type="submit" class="success">Salvar</button>
+        </div>
+    </form>
+</main>
+<script>document.getElementById('busca').focus();</script>
+<%- include('../partials/foot.ejs') %>

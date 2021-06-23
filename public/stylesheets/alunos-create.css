@@ -1,0 +1,13 @@
+main#alunos-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main#alunos-create form{
+    background-color: #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #DDD;
+}
