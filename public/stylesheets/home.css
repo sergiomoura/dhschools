@@ -1,0 +1,32 @@
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    grid-auto-rows: 1fr;
+}
+
+main>article{
+    background-color: #F1F1F1;
+    border: 1px solid #DDD;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+main>article.number-display{
+    font-size: 10vw;
+}
+
+main>article.number-display div{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Courier, monospace;
+}
+
+main>article>span{
+    display: block;
+    font-size: 1rem;
+}

@@ -1,0 +1,67 @@
+main {
+    padding:0 20px;
+}
+main#alunos form{
+    position: fixed;
+    width: calc(100% - 330px);
+    background-color: #FFF;
+}
+
+main#alunos form nav{
+    display: flex ;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+main#alunos form input{
+    border:1px solid #CCC;
+    font-size: 2rem;
+    color: #999;
+    padding: 5px;
+    width: 100%;
+    margin-bottom:20px;
+}
+
+main#alunos form input::placeholder{
+    color: #DDD;
+}
+
+main#alunos form input:focus{
+    outline: none;
+    border: 1px solid #999;
+}
+
+main#alunos ul {
+    padding: 0;
+    margin:0;
+    margin-top: 120px;
+    list-style: none;
+}
+
+main#alunos ul li {
+    display: flex;
+    border-bottom: 1px solid #DDD;
+}
+
+main#alunos ul li:hover{
+    background-color: #F1F1F1;
+}
+
+main#alunos>article>ul>li>section:first-child{
+    flex-grow: 1;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+main#alunos>article>ul>li>section:first-child>div{
+    font-size: 0.8rem;
+}
+
+main#alunos>article>ul>li>section:last-child{
+    display: flex;
+    align-items: center;
+}
+
+main#alunos>article>ul>li>section:last-child a{
+    text-decoration: none;
+    padding:0 5px;
+}
