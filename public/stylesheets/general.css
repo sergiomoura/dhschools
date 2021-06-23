@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+html{
+    font-size: 16px;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #999999;
+}
+
+body {
+    display: flex;
+}
+
+aside {
+    background-color: #f1f1f1;
+}
+
+#logo{
+    display: inline-block;
+    padding: 20px;
+}
+#logo>img{
+    width: 240px;
+}
+
+nav ul{
+    padding: 0;
+    margin: 0;
+}
+
+nav>ul>li>a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 10px 20px;
+    color: inherit;
+    border-top: 1px solid #DDD;
+    font-size: 0.8rem;
+}
+
+a {
+    color:inherit;
+}
+
+nav>ul>li>a:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+nav>ul>li>a>i{
+    margin-right: 10px;
+}
+
+main {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    grid-auto-rows: 1fr;
+    flex-grow: 1;    
+}
+
+main>article{
+    background-color: #F1F1F1;
+    border: 1px solid #DDD;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+main>article.number-display{
+    font-size: 10vw;
+}
+
+main>article.number-display div{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Courier, monospace;
+}
+
+main>article>span{
+    display: block;
+    font-size: 1rem;
+}
