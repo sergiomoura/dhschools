@@ -1,0 +1,61 @@
+main#cursos-index{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main#cursos-index h1{
+
+}
+
+main#cursos-index>form{
+    background-color: #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #DDD;
+    width: 50%;
+}
+
+main#cursos-index>form h2{
+    margin: 0;
+}
+
+main#cursos-index>article{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin:20px 0 0 0;
+    width: 50%;
+}
+
+main#cursos-index>article>section{
+    background-color: #F1F1F1;
+    border: 1px solid #DDD;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+main#cursos-index>article>section>h2{
+    margin:0;
+}
+
+main#cursos-index>article>section>span{
+    display: block;
+    font-size: 1rem;
+}
+
+main#cursos-index>article>section>form{
+    position: absolute;
+    top:20px;
+    right: 20px;
+}
+
+main#cursos-index>article>section>form *{
+    cursor: pointer;
+    border: none;
+    color: inherit;
+}
+
