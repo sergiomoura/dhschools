@@ -19,7 +19,6 @@ CREATE TABLE `professores` (
 CREATE TABLE `areas` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tipo` varchar(100) NOT NULL,
-  `ano_matricula` int NOT NULL,
   PRIMARY KEY (`id`)
 ) CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
