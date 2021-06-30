@@ -60,9 +60,82 @@ Esse repositório é destinado á um projeto a ser desenvolvido com os alunos da
         'migrations-path': path.resolve('./database/migrations'),
     }
     ```
+
 12. Inicie o sequelize em seu projeto com o `sequelize init`.\
-    
-    
+        
     > **Teste** - O comando `sequelize init` deve ter criado uma pasta database e, dentro dela, outras quatro: config, migrations, models e seeders.
     > 
     > **commit f2f3f75**
+
+13. Altere o arquivo `/database/config.js`:
+    - *Modifique os valores para que ele consiga se conectar ao seu banco de dados no MySQL*
+    - *Exporte o objeto literal definido no arquivo usando o `module.exports`*
+  
+
+    >**Teste**
+    > 
+    > - Crie uma pasta `tests`
+    > - Crie um arquivo `dbcon.test.js` e adicione o código
+    > ```
+    > const {QueryTypes, Sequelize} = require('sequelize');
+    > const config = require('../database/config/config').development;
+    > 
+    > const sequelize = new Sequelize(config);
+    > sequelize.query("SELECT * FROM areas",{ type: QueryTypes.SELECT }).then(
+    >     areas => {
+    >         console.log(areas);
+    >         process.exit();
+    >     }
+    > )
+    > ```
+    > - Execute o script criado com o comando `node tests/dbcon.test.js`
+    > Espera-se que a saída seja algo assim:
+    > ```
+    > Executing (default): SELECT * FROM areas
+    > []
+    > ```
+    >
+    >**commit d3b1147**
+
+14. Na pasta `database/models` crie um arquivo Area.js. Este arquivo conterá o model que representa a entidade *Area*
+    - *Neste script você deve definir e exportar uma função que recebe dois parâmetros: sequelize e DataTypes (nesta ordem)*
+    - *Esta função deve retornar um objeto*
+    - *Este objeto a ser retornado é criado pela execução da função `sequelize.define()`*
+    - *A função `sequelize.define()` recebe três parâmetros.*
+      1. Uma string que será o nome do model. No caso, 'Area'.
+      2. Um objeto identifica as colunas da tabela com seus respectivos tipos. Neste caso, são duas colunas: tipo e ano_matricula
+      ```
+      {
+          tipo: DataTypes.STRING(100),
+          ano_matricula: DataTypes.INTEGER,
+      }
+      ```
+      3. Um objeto carregando algumas configurações. A primeira será o nome da tabela no atributo tableName: 'areas'. A segunda será para dizer que essa tabela não tem timestamps.
+      ```
+      {
+        tableName: 'areas',
+        timestamps: false
+      }
+      ```
+
+    - *Lembre de retornar o objeto criado pela execução da função sequelize.define()*
+
+    > **Teste**
+    > - Crie um script areas.test.js na pasta tests com o seguinte conteúdo
+    >   ```
+    >    const { sequelize, Area } = require('../database/models');
+    >    
+    >    Area.findAll().then(
+    >        data => {
+    >            console.log(data.map( u => u.toJSON()));
+    >            sequelize.close();
+    >        }
+    >    )
+    >   ```
+    > - Execute o script com o comando `node tests/areas.test.js`
+    > - Espera-se obter o resultado
+    >   ```
+    >   Executing (default): SELECT `id`, `tipo`, `ano_matricula` FROM `areas` AS `Area`;
+    >   []
+    >   ```
+    > Insira alguns dados na tabela areas e repita o teste. :wink: 
