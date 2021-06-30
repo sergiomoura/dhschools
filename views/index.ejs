@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./partials/head.ejs') %>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  <form>
+    <img src="/images/DHSchools.png" alt="DHSchools">
+    <label for="email">
+      E-mail
+      <input type="email" name="email" id="email">
+    </label>
+    <label for="password">
+      Senha
+      <input type="password" name="password" id="password">
+    </label>
+    <div class="controles">
+      <button type="button" class="cancel">😢 Esqueci...</button>
+      <button class="success">Logar</button>
+    </div>
+  </form>
+  <script>
+    document.getElementById('email').focus();
+  </script>
+<%- include('./partials/foot.ejs') %>

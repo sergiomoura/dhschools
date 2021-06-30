@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F0F0;
+  }
+
+  form {
+    border: 1px solid #CCC;
+    padding: 30px;
+    width: 30%;
+    min-width: 400px;
+  }
+
+  form>img{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  form>label{
+    margin-bottom: 20px;
+    display: block;
+    font-size: 1rem;
+  }
+
+  form>label>input{
+    font-size: 1.2rem;
+  }
