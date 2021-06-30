@@ -20,46 +20,18 @@
             </div>
         </form>
         <article>
-            <section>
-                <h2>Programação</h2>
-                <span>2017</span>
-                <form>
-                    <button type="submit" title="Remover">
-                        <i class="material-icons">delete</i>
-                    </button>
-                    <a title="Editar"><i class="material-icons">edit</i></a>
-                </form>
-            </section>
-            <section>
-                <h2>Programação</h2>
-                <span>2017</span>
-                <form>
-                    <button type="submit" title="Remover">
-                        <i class="material-icons">delete</i>
-                    </button>
-                    <a title="Editar"><i class="material-icons">edit</i></a>
-                </form>
-            </section>
-            <section>
-                <h2>Programação</h2>
-                <span>2017</span>
-                <form>
-                    <button type="submit" title="Remover">
-                        <i class="material-icons">delete</i>
-                    </button>
-                    <a title="Editar"><i class="material-icons">edit</i></a>
-                </form>
-            </section>
-            <section>
-                <h2>Programação</h2>
-                <span>2017</span>
-                <form>
-                    <button type="submit" title="Remover">
-                        <i class="material-icons">delete</i>
-                    </button>
-                    <a title="Editar"><i class="material-icons">edit</i></a>
-                </form>
-            </section>
+            <% for(area of areas){ %>
+                <section>
+                    <h2><%=area.tipo%></h2>
+                    <span>2017</span>
+                    <form>
+                        <button type="submit" title="Remover">
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <a title="Editar"><i class="material-icons">edit</i></a>
+                    </form>
+                </section>    
+            <% } %>
         </article>       
     </main>
 
