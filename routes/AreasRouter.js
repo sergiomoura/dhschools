@@ -1,6 +1,9 @@
 // Importando o express
 const express = require('express');
 
+// Importando o Controller
+const AreasController = require('../controllers/AreasController');
+
 // Criando o roteador
 const router = express.Router();
 
