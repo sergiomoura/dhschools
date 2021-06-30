@@ -64,4 +64,5 @@ Esse repositório é destinado á um projeto a ser desenvolvido com os alunos da
     
     
     > **Teste** - O comando `sequelize init` deve ter criado uma pasta database e, dentro dela, outras quatro: config, migrations, models e seeders.
-    > commit
+    > 
+    > **commit f2f3f75**
