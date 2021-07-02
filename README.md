@@ -11,7 +11,7 @@ Esse repositório é destinado á um projeto a ser desenvolvido com os alunos da
  2. Crie um roteador com uma rota get para '/areas' no arquivo AreasRouter:\
   - *Essa rota deve direcionar a requisição para o método AreasController.index (ainda inexistente)*
   - *Lembre-se de exportar o roteador para que ele seja importado e usado no app.js*\
-**[commit 7f6b24a]**
+**[commit 588e5042110fa07e5a7b8f47436e2fcaaf148c28 - Definindo o roteador AreasRouter.js]**
 
  3. Altere o app.js para que ele possa utilizar o roteador definido em AreasRouter.js\
     *Nesse momento o seu node deve estar mostrando uma mensagem de erro*
