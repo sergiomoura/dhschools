@@ -5,7 +5,7 @@ Esse repositório é destinado á um projeto a ser desenvolvido com os alunos da
 
 # Roadmap
 
-### Primeira Parte: Criando um ciclo Rota → View → Controller
+### Primeira Parte: Criando um ciclo Rota → Controller → View
 
  1. Crie um arquivo `AreasRouter.js` na pasta /routes
  2. Crie um roteador com uma rota get para '/areas' no arquivo AreasRouter:\
