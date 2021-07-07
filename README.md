@@ -24,7 +24,7 @@ Esse repositório é destinado á um projeto a ser desenvolvido com os alunos da
 
 - *Lembre-se de exportar o roteador para que ele seja importado e usado no app.js*\
 
-**[commit [588e50](588e5042110fa07e5a7b8f47436e2fcaaf148c28) - Definindo o roteador AreasRouter.js]**
+**[commit 588e504 - Definindo o roteador AreasRouter.js]**
 
   
 
@@ -65,7 +65,7 @@ ReferenceError: AreasController is not defined
 
 >
 
-> **[commit 31d93d4]**
+> **[commit a1ec870 - Fazendo com que a rota get /areas retorne uma string qualquer]**
 
   
 
@@ -75,7 +75,7 @@ ReferenceError: AreasController is not defined
 
 >
 
-> **[commit 053a306]**
+> **[commit a5039a8 - AreasController agora retorna uma view!]**
 
 ***
 
@@ -99,31 +99,21 @@ ReferenceError: AreasController is not defined
 
 const path = require('path')
 
-  
-
 module.exports = {
-
-config: path.resolve('./database/config', 'config.js'),
-
-'models-path': path.resolve('./database/models'),
-
-'seeders-path': path.resolve('./database/seeders'),
-
-'migrations-path': path.resolve('./database/migrations'),
-
+  config: path.resolve('./database/config', 'config.js'),
+  'models-path': path.resolve('./database/models'),
+  'seeders-path': path.resolve('./database/seeders'),
+  'migrations-path': path.resolve('./database/migrations'),
 }
 
 ```
-
-  
+ 
 
 12. Inicie o sequelize em seu projeto com o `sequelize init`.
 
 > **Teste** - O comando `sequelize init` deve ter criado uma pasta database e, dentro dela, outras quatro: config, migrations, models e seeders.
-
 >
-
-> **commit f2f3f75**
+> **commit 8cc775b - Instalados pacotes do sequelize. Sequelize configurado**
 
   
 
@@ -136,169 +126,92 @@ config: path.resolve('./database/config', 'config.js'),
   
 
 >**Teste**
-
 >
-
 > - Crie uma pasta `tests`
-
 > - Crie um arquivo `dbcon.test.js` e adicione o código
-
-> ```
-
+> ```javascript
 > const {QueryTypes, Sequelize} = require('sequelize');
-
 > const config = require('../database/config/config').development;
-
 >
-
 > const sequelize = new Sequelize(config);
-
 > sequelize.query("SELECT * FROM areas",{ type: QueryTypes.SELECT }).then(
-
-> areas => {
-
-> console.log(areas);
-
-> process.exit();
-
-> }
-
+>   areas => {
+>     console.log(areas);
+>     process.exit();
+>   }
 > )
-
 > ```
-
 > - Execute o script criado com o comando `node tests/dbcon.test.js`
-
 > Espera-se que a saída seja algo assim:
-
-> ```
-
+> ```console
 > Executing (default): SELECT * FROM areas
-
 > [
-
-> { id: 1, tipo: 'Programação' },
-
-> { id: 2, tipo: 'Marketing' },
-
-> { id: 3, tipo: 'User Experience' },
-
-> { id: 4, tipo: 'Customer Experience' },
-
-> { id: 5, tipo: 'Dados' },
-
-> { id: 6, tipo: 'Negócios' },
-
-> { id: 7, tipo: 'Culinária' }
-
+>   { id: 1, tipo: 'Programação' },
+>   { id: 2, tipo: 'Marketing' },
+>   { id: 3, tipo: 'User Experience' },
+>   { id: 4, tipo: 'Customer Experience' },
+>   { id: 5, tipo: 'Dados' },
+>   { id: 6, tipo: 'Negócios' },
+>   { id: 7, tipo: 'Culinária' }
 > ]
-
 > ```
-
 >
-
->**commit d3b1147**
+>**commit d8f3a4c - Adequaçao da configuraçao do sequelize e teste de conexao**
 
   
 
 14. Na pasta `database/models` crie um arquivo Area.js. Este arquivo conterá o model que representa a entidade *Area*
 
 - *Neste script você deve definir e exportar uma função que recebe dois parâmetros: sequelize e DataTypes (nesta ordem)*
-
 - *Esta função deve retornar um objeto*
-
 - *Este objeto a ser retornado é criado pela execução da função `sequelize.define()`*
-
 - *A função `sequelize.define()` recebe três parâmetros.*
+  1. Uma string que será o nome do model. No caso, 'Area'.
+  2. Um objeto identifica as colunas da tabela com seus respectivos tipos. Neste caso, são uma coluna é necessária: tipo. A coluna id pode ser omitida.
 
-1. Uma string que será o nome do model. No caso, 'Area'.
+    ```javascript
+    {tipo: DataTypes.STRING(100)}
+    ```
 
-2. Um objeto identifica as colunas da tabela com seus respectivos tipos. Neste caso, são uma coluna é necessária: tipo. A coluna id pode ser omitida.
+  3. Um objeto carregando algumas configurações. A primeira será o nome da tabela no atributo tableName: 'areas'. A segunda será para dizer que essa tabela não tem timestamps.
 
-```javascript
-
-{
-
-tipo: DataTypes.STRING(100),
-
-}
-
-```
-
-3. Um objeto carregando algumas configurações. A primeira será o nome da tabela no atributo tableName: 'areas'. A segunda será para dizer que essa tabela não tem timestamps.
-
-```javascript
-
-{
-
-tableName: 'areas',
-
-timestamps: false
-
-}
-
-```
-
-  
+    ```javascript
+    {
+      tableName: 'areas',
+      timestamps: false
+    }
+    ```
 
 - *Lembre de retornar o objeto criado pela execução da função sequelize.define()*
-
-  
-
+ 
 > **Teste**
-
 > - Crie um script areas.test.js na pasta tests com o seguinte conteúdo
-
 > ```javascript
-
-> const { sequelize, Area } =  require('../database/models');
-
->
-
-> Area.findAll().then(
-
-> data  => {
-
-> console.log(data.map(  u  =>  u.toJSON()));
-
-> sequelize.close();
-
-> }
-
-> )
-
+>   const { sequelize, Area } =  require('../database/models');
+> 
+>   Area.findAll().then(
+>     data  => {
+>       console.log(data.map(  u  =>  u.toJSON()));
+>       sequelize.close();
+>     }
+>   )
 > ```
-
 > - Execute o script com o comando `node tests/areas.test.js`
-
 > - Espera-se obter o resultado
-
 > ```console
-
 > Executing (default): SELECT `id`, `tipo` FROM `areas` AS `Area`;
-
 > [
-
-> { id: 1, tipo: 'Programação' },
-
-> { id: 2, tipo: 'Marketing' },
-
-> { id: 3, tipo: 'User Experience' },
-
-> { id: 4, tipo: 'Customer Experience' },
-
-> { id: 5, tipo: 'Dados' },
-
-> { id: 6, tipo: 'Negócios' },
-
-> { id: 7, tipo: 'Culinária' }
-
+>   { id: 1, tipo: 'Programação' },
+>   { id: 2, tipo: 'Marketing' },
+>   { id: 3, tipo: 'User Experience' },
+>   { id: 4, tipo: 'Customer Experience' },
+>   { id: 5, tipo: 'Dados' },
+>   { id: 6, tipo: 'Negócios' },
+>   { id: 7, tipo: 'Culinária' }
 > ]
-
 > ```
-
 > :wink: Legal?
-
+> **commit 8500b06 - Criado model Area e seu teste**
   
 
 ### Terceira Parte: Mostrando as Áreas na Tela do Usuário
@@ -306,49 +219,31 @@ timestamps: false
   
 
 15. Altere o `AreasController.js` da seguinte forma.
-
-- Importe o model *Area* para uma constante `Area`.
-
-- Guarde a saída da função Area.findAll() numa variável chamada `areas`.\
-
-Lembre-se que o método Area.findAll() é assíncrono. Ele precisará de um `await` para funcionar bem.
-
-- Altere o método *index* para `async` para que o await seja possível dentro da função.
-
-- Agora, ainda no método *index*, acrescente um segundo parâmetro a chamada do método res.render: `{areas}`.\
-
-Lembra que o método render retorna uma view? Pois bem! Agora, com esse segundo parâmetro, você está passando informações para preencher essa view!\
+  - Importe o model `Area` para uma constante `Area`.
+  - Guarde a saída da função `Area.findAll()` numa variável chamada `areas`.\
+  Lembre-se que o método `Area.findAll()` é assíncrono. Ele precisará de um `await` para funcionar bem.
+- Altere o método `index()` para *async* para que o await seja possível dentro da função.
+- Agora, ainda no método *index()*, acrescente um segundo parâmetro a chamada do método res.render: `{areas}`.\
+  Lembra que o método render retorna uma view? Pois bem! Agora, com esse segundo parâmetro, você está passando informações para preencher essa view!
 
 O Código resultante deve ficar algo assim:
 
-  
-
 ```javascript
-
 const { Area } =  require('../database/models');
-
-  
-
 const AreasController = {
-
-index:  async (req, res) =>{
-
-let areas =  await Area.findAll();
-
-return res.render('areas/areas-index', {areas});
-
+  index:  async (req, res) =>{
+    let areas =  await Area.findAll();
+    return res.render('areas/areas-index', {areas});
+  }
 }
-
-}
-
-  
 
 module.exports  = AreasController;
-
 ```
-
-  
 
 16. Altere o arquivo views/areas/areas-index.ejs de modo que, em um loop, cada bloco, mostre o tipo de cada uma das áreas.\
 
-**[commit e904908]**
+> **Teste**\
+> Acessando então http://localhost:3000/areas você deve ver uma página com a seguinte aparência.
+
+![Screenshot de áreas](/docs/screenshot-areas.jpeg)
+**[commit 52551ab - Carregando areas da base exibindo na view]**
